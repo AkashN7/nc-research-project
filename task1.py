@@ -7,7 +7,6 @@ data = cwd + r'\TravelTimeData.xlsx'
 
 xl = pd.read_excel(data)
 
-
 d = {'LinkName': [], 'Date': [], 'Year': [], 'Day-of-the-week': [], 'Time-of-the-day': [], 'Travel time': []}
 
 for index, row in xl.iterrows():
