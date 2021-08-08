@@ -45,5 +45,19 @@ for x in d2:
     d['MaxTT'].append(round(np.max(d2[x]), 2))
     d['StdDev'].append(round(np.std(d2[x]), 2))
 
+    # Task 3 stuff
+    PT = np.percentile(d2[x], 95)
+    d['PT'].append(round(PT, 2))
+    d['PTI'].append(round(PT/np.percentile(d2[x], 15), 2))
+    BT = PT - AVG
+    d['BT'].append(round(BT, 2))
+    d['BTI'].append(round(BT/AVG, 2))
+    d['TTI'].append(round(AVG/np.percentile(d2[x], 15), 2))
+    if P50-P10 == 0:
+        d['L_Skew'].append(float('inf'))
+    else:
+        d['L_Skew'].append(round((P90 - P50) / (P50 - P10), 2))
+    d['L_Var'].append(round((P90 - P10)/P50, 2))
+
 frame = pd.DataFrame(d)
 frame.to_csv("ProcessedTask3.csv", index=False)
