@@ -1,9 +1,9 @@
 import pandas as pd
 import os
-from datetime import timedelta
 import numpy as np
 
 cwd = os.getcwd()
+# Replace ProcessedTimeData.xlsx with input file name
 data = cwd + r'\ProcessedTimeData.csv'
 
 xl = pd.read_csv(data)
@@ -46,4 +46,5 @@ for x in d2:
     d['StdDev'].append(round(np.std(d2[x]), 2))
 
 frame = pd.DataFrame(d)
-frame.to_csv("ProcessedTask3.csv", index=False)
+# Replace ProcessedTask2.csv with output file name
+frame.to_csv("ProcessedTask2.csv", index=False)

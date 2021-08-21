@@ -1,9 +1,9 @@
 import pandas as pd
 import os
-from datetime import timedelta
 import numpy as np
 
 cwd = os.getcwd()
+# Replace ProcessedTimeData.xlsx with input file name
 data = cwd + r'\ProcessedTimeData.csv'
 
 xl = pd.read_csv(data)
@@ -60,4 +60,5 @@ for x in d2:
     d['L_Var'].append(round((P90 - P10)/P50, 2))
 
 frame = pd.DataFrame(d)
+# Replace ProcessedTask3.csv with output file name
 frame.to_csv("ProcessedTask3.csv", index=False)

@@ -1,10 +1,10 @@
 import holidays
 import pandas as pd
 import os
-from datetime import timedelta
 import numpy as np
 
 cwd = os.getcwd()
+# Replace ProcessedTimeData.xlsx with input file name
 data = cwd + r'\ProcessedTimeData.csv'
 
 xl = pd.read_csv(data)
@@ -20,6 +20,8 @@ d3 = {'LinkName': [], 'Date': [], 'Year': [], 'Day-of-the-week': [], 'Time-of-th
       'BT': [], 'BTI': [], 'TTI': [], 'L_Skew': [], 'L_Var': []}
 
 federal = []
+
+# Add or remove years in desired range by copying one of the loops below and changing the year within the parentheses
 
 for date in holidays.UnitedStates(years=2017).items():
     federal.append(date[0].strftime('%m/%d/%Y'))
@@ -96,4 +98,5 @@ for x in d2:
         d3['L_Var'].append(round(L_Var, 2))
 
 frame = pd.DataFrame(d3)
+# Replace ProcessedTask4_FederalHolidays_Weekdays.csv with output file name
 frame.to_csv("ProcessedTask4_FederalHolidays_Weekdays.csv", index=False)

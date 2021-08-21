@@ -1,9 +1,9 @@
 import pandas as pd
 import os
-from datetime import timedelta
 import numpy as np
 
 cwd = os.getcwd()
+# Replace ProcessedTimeData.xlsx with input file name
 data = cwd + r'\ProcessedTimeData.csv'
 
 xl = pd.read_csv(data)
@@ -120,12 +120,15 @@ for x in d2:
 
 # Processed data for selected dates
 frame3 = pd.DataFrame(d3)
+# Replace ProcessedTask4_SelectedDates.csv with output file name
 frame3.to_csv("ProcessedTask4_SelectedDates.csv", index=False)
 
 # Processed data for weekdays excluding selected dates
 frame3 = pd.DataFrame(d4)
+# Replace ProcessedTask4_SelectedDates_Weekdays.csv with output file name
 frame3.to_csv("ProcessedTask4_SelectedDates_Weekdays.csv", index=False)
 
 # Processed data for weekends excluding selected dates
 frame3 = pd.DataFrame(d5)
+# Replace ProcessedTask4_SelectedDates_Weekends.csv with output file name
 frame3.to_csv("ProcessedTask4_SelectedDates_Weekends.csv", index=False)

@@ -3,6 +3,7 @@ import os
 from datetime import timedelta
 
 cwd = os.getcwd()
+# Replace TravelTimeData.xlsx with input file name
 data = cwd + r'\TravelTimeData.xlsx'
 
 xl = pd.read_excel(data)
@@ -23,4 +24,5 @@ for index, row in xl.iterrows():
     d['Travel time'].append(row['travel_time_minutes'])
 
 frame = pd.DataFrame(d)
+# Replace ProcessedTimeData.csv with output file name
 frame.to_csv("ProcessedTimeData.csv", index=False)
