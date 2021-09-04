@@ -10,8 +10,7 @@ xl = pd.read_csv(data)
 
 d = {'LinkName': [], 'Year': [], 'Day-of-the-week': [], 'Time-of-the-day': [], 'MinTT': [],
      'TT10': [], 'TT15': [], 'TT25': [], 'TT50': [], 'AvgTT': [], 'TT85': [], 'TT90': [], 'TT95': [],
-     'MaxTT': [], 'StdDev': [], 'PT': [], 'PTI': [], 'BT': [], 'BTI': [], 'TTI': [],
-     'L_Skew': [], 'L_Var': [], }
+     'MaxTT': [], 'StdDev': []}
 
 d2 = {}
 

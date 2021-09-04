@@ -12,12 +12,12 @@ xl = pd.read_csv(data)
 d = {'LinkName': [], 'Year': [], 'Day-of-the-week': [], 'Time-of-the-day': [], 'MinTT': [],
      'TT10': [], 'TT15': [], 'TT25': [], 'TT50': [], 'AvgTT': [], 'TT85': [], 'TT90': [], 'TT95': [],
      'MaxTT': [], 'StdDev': [], 'PT': [], 'PTI': [], 'BT': [], 'BTI': [], 'TTI': [],
-     'L_Skew': [], 'L_Var': [], }
+     'L_Skew': [], 'L_Var': []}
 
 d2 = {}
 
-d3 = {'LinkName': [], 'Date': [], 'Year': [], 'Day-of-the-week': [], 'Time-of-the-day': [], 'PT': [], 'PTI': [],
-      'BT': [], 'BTI': [], 'TTI': [], 'L_Skew': [], 'L_Var': []}
+d3 = {'LinkName': [], 'Year': [], 'Day-of-the-week': [], 'Time-of-the-day': [], 'PT': [], 'PTI': [],
+      'BT': [], 'BTI': [], 'TTI': [], 'L_Skew': [], 'L_Var': [], 'AvgTT': []}
 
 federal = []
 
@@ -34,11 +34,12 @@ for date in holidays.UnitedStates(years=2019).items():
 
 for index, row in xl.iterrows():
     name = str(row['LinkName']) + '#' + str(row['Year']) + '#' + str(row['Day-of-the-week']) +\
-           '#' + str(row['Time-of-the-day']) + '#' + str(row['Date'])
-    if name in d2:
-        d2[name].append(row['Travel time'])
-    else:
-        d2[name] = [row['Travel time']]
+           '#' + str(row['Time-of-the-day']) + '#'
+    if str(row['Date']) not in federal:
+        if name in d2:
+            d2[name].append(row['Travel time'])
+        else:
+            d2[name] = [row['Travel time']]
 
 for x in d2:
     labels = x.split('#')
@@ -83,9 +84,8 @@ for x in d2:
     d['L_Var'].append(round(L_Var, 2))
 
     # Task 4 Part 3
-    if labels[4] not in federal:
+    if 2 < int(labels[2]) < 6:
         d3['LinkName'].append(labels[0])
-        d3['Date'].append(labels[4])
         d3['Year'].append(labels[1])
         d3['Day-of-the-week'].append(labels[2])
         d3['Time-of-the-day'].append(labels[3])
@@ -96,6 +96,7 @@ for x in d2:
         d3['TTI'].append(round(TTI, 2))
         d3['L_Skew'].append(round(L_Skew, 2))
         d3['L_Var'].append(round(L_Var, 2))
+        d3['AvgTT'].append(round(AVG, 2))
 
 frame = pd.DataFrame(d3)
 # Replace ProcessedTask4_FederalHolidays_Weekdays.csv with output file name

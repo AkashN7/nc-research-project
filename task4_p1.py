@@ -11,15 +11,15 @@ xl = pd.read_csv(data)
 d = {'LinkName': [], 'Year': [], 'Day-of-the-week': [], 'Time-of-the-day': [], 'MinTT': [],
      'TT10': [], 'TT15': [], 'TT25': [], 'TT50': [], 'AvgTT': [], 'TT85': [], 'TT90': [], 'TT95': [],
      'MaxTT': [], 'StdDev': [], 'PT': [], 'PTI': [], 'BT': [], 'BTI': [], 'TTI': [],
-     'L_Skew': [], 'L_Var': [], }
+     'L_Skew': [], 'L_Var': []}
 
 d2 = {}
 
 d3 = {'LinkName': [], 'Year': [], 'Day-of-the-week': [], 'Time-of-the-day': [], 'PT': [], 'PTI': [],
-      'BT': [], 'BTI': [], 'TTI': [], 'L_Skew': [], 'L_Var': []}
+      'BT': [], 'BTI': [], 'TTI': [], 'L_Skew': [], 'L_Var': [], 'AvgTT': []}
 
 d4 = {'LinkName': [], 'Year': [], 'Day-of-the-week': [], 'Time-of-the-day': [], 'PT': [], 'PTI': [],
-      'BT': [], 'BTI': [], 'TTI': [], 'L_Skew': [], 'L_Var': []}
+      'BT': [], 'BTI': [], 'TTI': [], 'L_Skew': [], 'L_Var': [], 'AvgTT': []}
 
 for index, row in xl.iterrows():
     name = str(row['LinkName']) + '#' + str(row['Year']) + '#' + str(row['Day-of-the-week']) +\
@@ -83,6 +83,7 @@ for x in d2:
         d3['TTI'].append(round(TTI, 2))
         d3['L_Skew'].append(round(L_Skew, 2))
         d3['L_Var'].append(round(L_Var, 2))
+        d3['AvgTT'].append(round(AVG, 2))
 
     # Part 1 Weekends
     if int(labels[2]) == 1:
@@ -97,6 +98,7 @@ for x in d2:
         d4['TTI'].append(round(TTI, 2))
         d4['L_Skew'].append(round(L_Skew, 2))
         d4['L_Var'].append(round(L_Var, 2))
+        d4['AvgTT'].append(round(AVG, 2))
 
 frame = pd.DataFrame(d3)
 # Replace ProcessedTask4_Weekdays.csv with output file name
